@@ -1,15 +1,15 @@
-household_power_consumption <- read.csv("household_power_consumption.txt", sep=";", na.strings="?", stringsAsFactors=FALSE)
-household_power_consumption <- household_power_consumption[(household_power_consumption$Date == '1/2/2007')|(household_power_consumption$Date == '2/2/2007'),]
-household_power_consumption$Date <- as.Date(household_power_consumption$Date, "%d/%m/%Y")
-household_power_consumption$DateTime <- as.POSIXct(paste(household_power_consumption$Date, household_power_consumption$Time), format="%Y-%m-%d %H:%M:%S")
+household.power.consumption <- read.csv("household_power_consumption.txt", sep=";", na.strings="?", stringsAsFactors=FALSE)
+household.power.consumption <- household.power.consumption[(household.power.consumption$Date == '1/2/2007')|(household.power.consumption$Date == '2/2/2007'),]
+household.power.consumption$Date <- as.Date(household.power.consumption$Date, "%d/%m/%Y")
+household.power.consumption$DateTime <- as.POSIXct(paste(household.power.consumption$Date, household.power.consumption$Time), format="%Y-%m-%d %H:%M:%S")
 par(mfrow = c(2,2))
-with(household_power_consumption,{
+with(household.power.consumption,{
   plot(DateTime,Global_active_power,type='l',ylab='Global Active Power')
   plot(DateTime,Voltage,type='l',ylab='Voltage',xlab='datetime')
   plot(DateTime,Sub_metering_1,type='l', col='black', ylab='Energy sub metering', xlab='', ylim=c(0,38))
   lines(DateTime,Sub_metering_2,type='l',col='red')
   lines(DateTime,Sub_metering_3,type='l',col='blue')
-  legend(x="topright",legend=c('Sub_metering_1','Sub_metering_2','Sub_metering_3'), lty=1, col=c('black','red','blue'),bty='n', cex=0.5,y.intersp=0.25)
+  legend(x="topright",legend=c('Sub_metering_1','Sub_metering_2','Sub_metering_3'), lty=1, col=c('black','red','blue'),bty='n')
   plot(DateTime,Global_reactive_power,type='l',ylab='Global_reactive_power',xlab='datetime')
 })
 dev.copy(png,'plot4.png')
