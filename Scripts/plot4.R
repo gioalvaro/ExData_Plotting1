@@ -5,7 +5,7 @@ household_power_consumption$DateTime <- as.POSIXct(paste(household_power_consump
 par(mfrow = c(2,2))
 with(household_power_consumption,{
   plot(DateTime,Global_active_power,type='l',ylab='Global Active Power')
-  plot(DateTime,Voltage,type='l',ylab='Energy sub metering',xlab='datetime')
+  plot(DateTime,Voltage,type='l',ylab='Voltage',xlab='datetime')
   plot(DateTime,Sub_metering_1,type='l', col='black', ylab='Energy sub metering', xlab='', ylim=c(0,38))
   lines(DateTime,Sub_metering_2,type='l',col='red')
   lines(DateTime,Sub_metering_3,type='l',col='blue')
